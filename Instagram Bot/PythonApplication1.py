@@ -69,7 +69,7 @@ def follow(person): # function that follows a single user
         browser.get('https://www.instagram.com/'+str(person))
         sleep(1)    
     
-        followButton = browser.find_element_by_xpath('//button[@class="_5f5mN       jIbKX  _6VtSN     yZn4P   "]') #clicks the follow button 
+        followButton = browser.find_element_by_xpath('(//button)[2]') #clicks the follow button 
         followButton.click()
         
     except:
@@ -120,7 +120,7 @@ login()
 strt = True
 while strt:
     print("Would you like to generate a list of people to folow  (enter 1) or would you like to follow a group of people from a prexisting list? (enter 2)")
-    slct = raw_input("Enter '1' or '2'         ")
+    slct = input("Enter '1' or '2'         ")
     if slct == '1':
         myFollowerList = []
         myFollowerList = list(myFollowers())
@@ -145,7 +145,7 @@ while strt:
 
     elif slct == '2':
         
-        text_file = open("FinalFollower", "r")
+        text_file = open("C:/Users/Rakan/Desktop/FinalFollowerbackup.txt", "r")
         file = text_file.readlines()
         text_file.close()
         file = str(file)
@@ -158,7 +158,6 @@ while strt:
 
         lengthDup = len(listed)
         print(lengthDup)
-        lengthDup = 10000
         mehList = []
         x = 1
         dumb = []
@@ -180,10 +179,13 @@ while strt:
 
         print(meh)
         print(mehFin)
-
+        counter = 0
         for x in meh:
             if follow(x):
                 sleep(24)
+            counter = counter + 1
+            clear()
+            print(counter)
 
 
         browser.quit()
